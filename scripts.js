@@ -151,22 +151,21 @@ function resetJump() {
     isJumping = false;
 }
 
-document.addEventListener(['mousedown', 'touchstart'].forEach (e) => {
+
+document.addEventListener('touchstart', upHandler, false);
+document.addEventListener('mousedown', upHandler, false);
+
+document.addEventListener('mouseup', downHandler, false);
+document.addEventListener('touchend', downHandler, false);
+
+function upHandler(event) {
     isJumping = true;
     //setTimeout(function() { resetJump(); }, 800);
-});
-
-document.addEventListener(['mouseup', 'touchend'].forEach (e) => {
-    resetJump();
-});
-/*
-document.body.onkeyup = function(e) {
-    if (e.keyCode == 32) {
-        isJumping = true;
-        setTimeout(function() { resetJump(); }, 1000);
-    }
 }
-*/
+
+function downHandler(event) {
+    resetJump();
+}
 
 function createScoreLabel(x, y) {
     this.score = 0;
