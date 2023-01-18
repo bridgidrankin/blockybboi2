@@ -151,12 +151,12 @@ function resetJump() {
     isJumping = false;
 }
 
-document.addEventListener('mousedown', (e) => {
+document.addEventListener(['mousedown', 'touchstart'].forEach (e) => {
     isJumping = true;
     //setTimeout(function() { resetJump(); }, 800);
 });
 
-document.addEventListener('mouseup', (e) => {
+document.addEventListener(['mouseup', 'touchend'].forEach (e) => {
     resetJump();
 });
 /*
